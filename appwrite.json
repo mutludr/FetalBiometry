@@ -1,0 +1,78 @@
+{
+  "projectId": "695f8bec002b1bf5dd0a",
+  "databases": [
+    {
+      "$id": "imagine-project-db",
+      "name": "Imagine Project DB",
+      "enabled": true
+    }
+  ],
+  "collections": [
+    {
+      "$id": "pregnant_women",
+      "$permissions": [
+        "create(\"any\")",
+        "read(\"any\")",
+        "update(\"any\")",
+        "delete(\"any\")"
+      ],
+      "databaseId": "imagine-project-db",
+      "name": "pregnant_women",
+      "enabled": true,
+      "documentSecurity": true,
+      "attributes": [
+        {
+          "key": "createdBy",
+          "type": "string",
+          "required": true,
+          "array": false,
+          "size": 64,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "name",
+          "type": "string",
+          "required": true,
+          "array": false,
+          "size": 255,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "lastMenstrualPeriod",
+          "type": "datetime",
+          "required": true,
+          "array": false,
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "notes",
+          "type": "string",
+          "required": false,
+          "array": false,
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        }
+      ],
+      "indexes": [
+        {
+          "key": "idx_createdBy",
+          "type": "key",
+          "status": "available",
+          "attributes": ["createdBy"],
+          "orders": ["ASC"]
+        },
+        {
+          "key": "idx_lmp",
+          "type": "key",
+          "status": "available",
+          "attributes": ["lastMenstrualPeriod"],
+          "orders": ["DESC"]
+        }
+      ]
+    }
+  ]
+}
